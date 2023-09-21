@@ -7,5 +7,13 @@
 </head>
 <body>
     <h1>Hola Humano</h1>
+    <h1>Lista de normas</h1>
+    @foreach ( $grays as $gray )
+        <li>
+            <a href="{{route('gray.show', $gray->id)}}">
+                {{ $gray->email}}
+            </a>
+        </li>
+    @endforeach
 </body>
 </html>

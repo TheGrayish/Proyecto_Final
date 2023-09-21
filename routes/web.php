@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+#Route::get('norma/pdf', [GrayController::class, 'pdf'])->('gray.pdf');
 Route::resource('gray', GrayController::class);

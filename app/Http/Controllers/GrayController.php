@@ -9,12 +9,18 @@ use Illuminate\Validation\Rules\Password;
 
 class GrayController extends Controller
 {
+   
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('grayindex');
+        //Gray::where ('nombre', 'Samuel')->get();
+        $grays = Gray::all();
+
+        # dd($grays);
+        
+        return view('grayindex', ['grays'=> $grays]);
     }
 
     /**
@@ -31,14 +37,16 @@ class GrayController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'correo'=>'required'|'email',
-            'password' => ['required', 'confirmed', Password::min(8)]
+            'email'=>'required|email',
+            'password' => 'required'
         ]);
 
         $gray = new Gray();
-        $gray->correo = $request->correo;
+        $gray->email = $request->email;
         $gray->password = $request->password;
         $gray->save();
+
+        return redirect()->route('gray.index');
     }
 
     /**
@@ -46,7 +54,8 @@ class GrayController extends Controller
      */
     public function show(Gray $gray)
     {
-        //
+        #dd($gray);
+        return view('gray-show', compact('gray'));
     }
 
     /**
