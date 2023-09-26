@@ -63,7 +63,7 @@ class GrayController extends Controller
      */
     public function edit(Gray $gray)
     {
-        //
+        return view('gray-edit', compact('gray'));
     }
 
     /**
@@ -71,7 +71,16 @@ class GrayController extends Controller
      */
     public function update(Request $request, Gray $gray)
     {
-        //
+        $request->validate([
+            'email'=>'required|email',
+            'password' => 'required'
+        ]);
+
+        $gray->email = $request->email;
+        $gray->password = $request->password;
+        $gray->save();
+
+        return redirect()->route('gray.index');
     }
 
     /**
@@ -79,6 +88,7 @@ class GrayController extends Controller
      */
     public function destroy(Gray $gray)
     {
-        //
+        $gray->delete();
+        return redirect()->route('gray.index');
     }
 }
