@@ -18,5 +18,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('prueba', function(){
+    return view('prueba');
+});
+
 #Route::get('norma/pdf', [GrayController::class, 'pdf'])->('gray.pdf');
 Route::resource('gray', GrayController::class);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
