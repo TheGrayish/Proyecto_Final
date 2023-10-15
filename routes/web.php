@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GrayController;
+use App\Http\Controllers\RequerimientoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,3 +36,4 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::resource('req', RequerimientoController::class);

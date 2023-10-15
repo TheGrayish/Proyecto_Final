@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gray extends Model
+class Requerimiento extends Model
 {
     use HasFactory;
-    
-    public function requerimientos()
-    {   
-            
-            return $this->hasMany(Requerimiento::class);
+
+    public function gray()
+    {
+        return $this->belongsTo(Gray::class);
     }
 }
