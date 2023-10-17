@@ -8,25 +8,23 @@
 </head>
 <body>
 
-    <form action="{{route('req.store')}}" method="POST">
+    <form action="{{ route('req.store') }}" method="POST">
     @csrf
     <label for="identificador">Identificador</label>
     <input type="text" name="identificador">
 
-    <label for="descripcion">descripcion</label>
-    <input type="submit" value="Crer Requerimientos">
-    
+    <label for="descripcion">Descripción</label>
+    <input type="text" name="descripcion">
+
     <select name="gray_id">
         @foreach ($grays as $gray)
-            <option value="{{gray->id}}">
-                {{gray->email}}
-            
+            <option value="{{ $gray->id }}">
+                {{ $gray->email }}
             </option>
         @endforeach
-
     </select>
 
-    <input type="submit" name="CrearRequerimientos">
+    <input type="submit" value="Crear Requerimientos">
     </form>
     
 </body>

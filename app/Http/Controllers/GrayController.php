@@ -20,6 +20,8 @@ class GrayController extends Controller
 
         # dd($grays);
         
+        
+
         return view('grayindex', ['grays'=> $grays]);
     }
 
@@ -41,10 +43,15 @@ class GrayController extends Controller
             'password' => 'required'
         ]);
 
+     //   Gray::where('id',$gray->id)
+    //  ->update($request->except('_token','_method'));
+
         $gray = new Gray();
         $gray->email = $request->email;
         $gray->password = $request->password;
         $gray->save();
+
+
 
         return redirect()->route('gray.index');
     }

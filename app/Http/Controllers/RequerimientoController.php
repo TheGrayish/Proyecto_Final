@@ -11,8 +11,11 @@ class RequerimientoController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {   
+    $reqs = Requerimiento::all();
+
+    return view('rec.req-index', compact('reqs'));
+    
     }
 
     /**

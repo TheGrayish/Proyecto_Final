@@ -44,7 +44,19 @@
             <h2>Contraseña:</h2>
             {{$gray->password}}
         </div>
-        <!-- Puedes agregar más detalles aquí de forma recursiva -->
+
+        <p>
+            <ul>
+                @foreach ($gray->requerimientos as $r)
+                    <li>
+                        {{$r->identificador}}
+                    </li>
+                
+            @endforeach</ul>
+      
+        </p>
+
+        
     </div>
 </body>
 </html>

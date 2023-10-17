@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Requerimiento extends Model
 {
     use HasFactory;
+    public $timesamps = false;
 
     public function gray()
     {
