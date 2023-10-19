@@ -24,7 +24,7 @@ Route::get('prueba', function(){
 });
 
 #Route::get('norma/pdf', [GrayController::class, 'pdf'])->('gray.pdf');
-Route::resource('gray', GrayController::class);
+Route::resource('gray', GrayController::class); //->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',

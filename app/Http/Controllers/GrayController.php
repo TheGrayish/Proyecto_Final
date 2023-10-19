@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
 class GrayController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index','show'); //except u only se pueden usar (para ver en cual te pide autenticzarte)
+    }
    
     /**
      * Display a listing of the resource.
@@ -42,9 +46,8 @@ class GrayController extends Controller
             'email'=>'required|email',
             'password' => 'required'
         ]);
-
-     //   Gray::where('id',$gray->id)
-    //  ->update($request->except('_token','_method'));
+  //  Gray::create($request->all());
+    
 
         $gray = new Gray();
         $gray->email = $request->email;
@@ -82,6 +85,9 @@ class GrayController extends Controller
             'email'=>'required|email',
             'password' => 'required'
         ]);
+
+         //   Gray::where('id',$gray->id)
+         //  ->update($request->except('_token','_method'));
 
         $gray->email = $request->email;
         $gray->password = $request->password;
